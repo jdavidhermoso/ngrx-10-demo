@@ -1,0 +1,21 @@
+<button (click)="onGetProductsBtnClicked()">
+  GET PRODUCTS!
+</button>
+
+
+<div *ngIf="(areProductsLoading$ | async); else productsList" class="loader">
+  <h1>
+    Loading products
+  </h1>
+
+</div>
+
+<ng-template #productsList>
+  <ul>
+    <li *ngFor="let product of (products$ | async)">
+      {{ product.name }}
+    </li>
+  </ul>
+</ng-template>
+
+
